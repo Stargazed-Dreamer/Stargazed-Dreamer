@@ -73,8 +73,8 @@ def api(path):
         return json.loads(r.read())
 
 
-def graphql(query):
-    body = json.dumps({"query": query}).encode()
+def graphql(query, variables=None):
+    body = json.dumps({"query": query, "variables": variables or {}}).encode()
     req = urllib.request.Request(
         "https://api.github.com/graphql", data=body,
         headers={"User-Agent": "widgets-renderer", "Authorization": f"bearer {TOKEN}"})
@@ -189,7 +189,7 @@ def main():
         contributionsCollection{ totalCommitContributions contributionCalendar{ weeks{ contributionDays{ contributionCount } } } }
         repositoriesContributedTo(first:1){ totalCount }
       }
-    }""")
+    }""", {"login": OWNER})
     u = data["user"]
     commits = u["contributionsCollection"]["totalCommitContributions"]
     contributed = u["repositoriesContributedTo"]["totalCount"]
