@@ -1,5 +1,5 @@
 <!-- ============ 顶部 banner（渐变波浪，星空紫→粉） ============ -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:FF6EC7&height=170&section=header&text=Stargazed-Dreamer&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=30&desc=%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87%E6%98%AF%E6%98%9F%E8%BE%B0%E5%A4%A7%E6%B5%B7%EF%BC%81&descSize=15&descAlignY=52" width="100%" />
+<img src="./assets/banner.svg" width="100%" />
 
 <div align="center">
 
@@ -15,11 +15,11 @@
 
 ## ⭐ 精选
 
-<a href="https://github.com/Stargazed-Dreamer/mesugaki"><img align="top" src="https://github-readme-stats.vercel.app/api/pin/?username=Stargazed-Dreamer&repo=mesugaki&hide_border=true" /></a>
-<a href="https://github.com/Stargazed-Dreamer/MelodyMark"><img align="top" src="https://github-readme-stats.vercel.app/api/pin/?username=Stargazed-Dreamer&repo=MelodyMark&hide_border=true" /></a>
+<a href="https://github.com/Stargazed-Dreamer/mesugaki"><img align="top" src="./assets/pin-mesugaki.svg" /></a>
+<a href="https://github.com/Stargazed-Dreamer/MelodyMark"><img align="top" src="./assets/pin-MelodyMark.svg" /></a>
 <br />
-<a href="https://github.com/Stargazed-Dreamer/MusePlayer"><img align="top" src="https://github-readme-stats.vercel.app/api/pin/?username=Stargazed-Dreamer&repo=MusePlayer&hide_border=true" /></a>
-<a href="https://github.com/Stargazed-Dreamer/localAgent-public"><img align="top" src="https://github-readme-stats.vercel.app/api/pin/?username=Stargazed-Dreamer&repo=localAgent-public&hide_border=true" /></a>
+<a href="https://github.com/Stargazed-Dreamer/MusePlayer"><img align="top" src="./assets/pin-MusePlayer.svg" /></a>
+<a href="https://github.com/Stargazed-Dreamer/localAgent-public"><img align="top" src="./assets/pin-localAgent-public.svg" /></a>
 
 ## 🎵 音乐线
 
@@ -45,19 +45,19 @@
 
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=Stargazed-Dreamer&show_icons=true&hide_border=true&theme=radical" />
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=Stargazed-Dreamer&show_icons=true&hide_border=true&theme=calm" />
-  <img alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=Stargazed-Dreamer&show_icons=true&hide_border=true&theme=calm" />
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="./assets/stats-light.svg" />
+  <img alt="GitHub stats" src="./assets/stats-light.svg" />
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=Stargazed-Dreamer&layout=compact&hide_border=true&theme=radical" />
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=Stargazed-Dreamer&layout=compact&hide_border=true&theme=calm" />
-  <img alt="Top langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Stargazed-Dreamer&layout=compact&hide_border=true&theme=calm" />
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/langs-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="./assets/langs-light.svg" />
+  <img alt="Top langs" src="./assets/langs-light.svg" />
 </picture>
 
 
 ## 年度活动曲线：
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Stargazed-Dreamer&bg_color=00000000&color=8A2BE2&line=FF6EC7&point=FFFFFF&hide_border=true" width="100%" />
+<img src="./assets/activity-graph.svg" width="100%" />
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Stargazed-Dreamer/Stargazed-Dreamer/output/dist/github-contribution-grid-snake-dark.svg" />
@@ -79,7 +79,7 @@ B 站粉丝徽章（把 <UID> 换成你的 B 站 uid）：
 
 ============================================ -->
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF6EC7,100:8A2BE2&height=120&section=footer" width="100%" />
+<img src="./assets/footer-wave.svg" width="100%" />
 
 ---
 

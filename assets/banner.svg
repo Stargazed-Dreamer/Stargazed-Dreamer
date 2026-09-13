@@ -1,0 +1,8 @@
+<svg width="850" height="170" viewBox="0 0 850 170" xmlns="http://www.w3.org/2000/svg" role="img">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#8A2BE2"/><stop offset="1" stop-color="#FF6EC7"/>
+</linearGradient></defs>
+<path d="M0,0 H850 V125 Q637,172 425,132 T0,138 Z" fill="url(#g)"/>
+<text x="425" y="72" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="42" font-weight="700" fill="#ffffff">Stargazed-Dreamer</text>
+<text x="425" y="102" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="15" fill="#ffffff" opacity="0.88">我们的目标是星辰大海！</text>
+</svg>

@@ -1,0 +1,49 @@
+# 每日从官方服务拉取组件图并提交回仓库（访客与作者统一从 GitHub 加载，绕开 vercel.app 直连问题）
+name: Refresh README widgets
+
+on:
+  schedule:
+    - cron: "0 1 * * *"   # UTC 01:00 = 北京时间 09:00
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "assets/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: widgets
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch official widget SVGs
+        run: |
+          mkdir -p assets
+          stats="https://github-readme-stats.vercel.app"
+          fetch() { curl -fsSL --max-time 60 -o "$2" "$1" || echo "WARN: fetch failed -> $2 (保留旧图)"; }
+          fetch "https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:FF6EC7&height=170&section=header&text=Stargazed-Dreamer&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=30&desc=%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87%E6%98%AF%E6%98%9F%E8%BE%B0%E5%A4%A7%E6%B5%B7%EF%BC%81&descSize=15&descAlignY=52" assets/banner.svg
+          fetch "https://capsule-render.vercel.app/api?type=waving&color=0:FF6EC7,100:8A2BE2&height=120&section=footer" assets/footer-wave.svg
+          fetch "$stats/api?username=Stargazed-Dreamer&show_icons=true&hide_border=true&theme=radical" assets/stats-dark.svg
+          fetch "$stats/api?username=Stargazed-Dreamer&show_icons=true&hide_border=true&theme=calm" assets/stats-light.svg
+          fetch "$stats/api/top-langs/?username=Stargazed-Dreamer&layout=compact&hide_border=true&theme=radical" assets/langs-dark.svg
+          fetch "$stats/api/top-langs/?username=Stargazed-Dreamer&layout=compact&hide_border=true&theme=calm" assets/langs-light.svg
+          fetch "$stats/api/pin/?username=Stargazed-Dreamer&repo=mesugaki&hide_border=true" assets/pin-mesugaki.svg
+          fetch "$stats/api/pin/?username=Stargazed-Dreamer&repo=MelodyMark&hide_border=true" assets/pin-MelodyMark.svg
+          fetch "$stats/api/pin/?username=Stargazed-Dreamer&repo=MusePlayer&hide_border=true" assets/pin-MusePlayer.svg
+          fetch "$stats/api/pin/?username=Stargazed-Dreamer&repo=localAgent-public&hide_border=true" assets/pin-localAgent-public.svg
+          fetch "https://github-readme-activity-graph.vercel.app/graph?username=Stargazed-Dreamer&bg_color=00000000&color=8A2BE2&line=FF6EC7&point=FFFFFF&hide_border=true" assets/activity-graph.svg
+
+      - name: Commit refreshed assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          if git diff --cached --quiet; then echo "no changes"; else git commit -m "chore(assets): 每日刷新 README 组件图"; git push; fi
