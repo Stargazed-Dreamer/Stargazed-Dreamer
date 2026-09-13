@@ -1,4 +1,5 @@
-# 每日从官方服务拉取组件图并提交回仓库（访客与作者统一从 GitHub 加载，绕开 vercel.app 直连问题）
+# README 组件图刷新：banner/footer 用 capsule-render；stats/langs/pins/activity 用
+# GITHUB_TOKEN 在 Actions 内自行渲染（公共 vercel 实例对 Actions 出口 IP 返回 503/402，不可依赖）
 name: Refresh README widgets
 
 on:
@@ -24,22 +25,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch official widget SVGs
+      - name: Banner & footer from capsule-render
         run: |
-          mkdir -p assets
-          stats="https://github-readme-stats.vercel.app"
           fetch() { curl -fsSL --max-time 60 -o "$2" "$1" || echo "WARN: fetch failed -> $2 (保留旧图)"; }
           fetch "https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:FF6EC7&height=170&section=header&text=Stargazed-Dreamer&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=30&desc=%E6%88%91%E4%BB%AC%E7%9A%84%E7%9B%AE%E6%A0%87%E6%98%AF%E6%98%9F%E8%BE%B0%E5%A4%A7%E6%B5%B7%EF%BC%81&descSize=15&descAlignY=52" assets/banner.svg
           fetch "https://capsule-render.vercel.app/api?type=waving&color=0:FF6EC7,100:8A2BE2&height=120&section=footer" assets/footer-wave.svg
-          fetch "$stats/api?username=Stargazed-Dreamer&show_icons=true&hide_border=true&theme=radical" assets/stats-dark.svg
-          fetch "$stats/api?username=Stargazed-Dreamer&show_icons=true&hide_border=true&theme=calm" assets/stats-light.svg
-          fetch "$stats/api/top-langs/?username=Stargazed-Dreamer&layout=compact&hide_border=true&theme=radical" assets/langs-dark.svg
-          fetch "$stats/api/top-langs/?username=Stargazed-Dreamer&layout=compact&hide_border=true&theme=calm" assets/langs-light.svg
-          fetch "$stats/api/pin/?username=Stargazed-Dreamer&repo=mesugaki&hide_border=true" assets/pin-mesugaki.svg
-          fetch "$stats/api/pin/?username=Stargazed-Dreamer&repo=MelodyMark&hide_border=true" assets/pin-MelodyMark.svg
-          fetch "$stats/api/pin/?username=Stargazed-Dreamer&repo=MusePlayer&hide_border=true" assets/pin-MusePlayer.svg
-          fetch "$stats/api/pin/?username=Stargazed-Dreamer&repo=localAgent-public&hide_border=true" assets/pin-localAgent-public.svg
-          fetch "https://github-readme-activity-graph.vercel.app/graph?username=Stargazed-Dreamer&bg_color=00000000&color=8A2BE2&line=FF6EC7&point=FFFFFF&hide_border=true" assets/activity-graph.svg
+
+      - name: Render stats / langs / pins / activity
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/render_widgets.py
 
       - name: Commit refreshed assets
         run: |
