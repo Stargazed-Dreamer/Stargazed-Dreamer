@@ -61,8 +61,6 @@
 
 
 <!-- ============ 可选区块：想用就取消注释 ============
-## 🐍 我的提交史在逃跑
-
 
 trophy 成就墙（零维护）：
 <img src="https://github-profile-trophy.vercel.app/?username=Stargazed-Dreamer&row=1&no-frame=true&theme=radical" width="100%" />
@@ -73,9 +71,9 @@ B 站粉丝徽章（把 <UID> 换成你的 B 站 uid）：
 
 底部波浪收尾：
 
-============================================ -->
-
 <img src="./assets/footer-wave.svg" width="100%" />
+
+============================================ -->
 
 ---
 
